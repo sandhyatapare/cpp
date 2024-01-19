@@ -1,0 +1,1013 @@
+#include <iostream>
+using namespace std;
+
+void add(int no1,int no2)
+{
+  cout<<"\nInt number adder\n"<<no1<<"+"<<no2<<"="<<(no1+no2);
+}
+void add(float no1,float no2)
+{
+  cout<<"\nFloat number adder\n"<<no1<<"+"<<no2<<"="<<(no1+no2);
+}
+void add(int no1,int no2,int no3)
+{
+  cout<<"\n3 Int number adder\n"<<no1<<"+"<<no2<<"+"<<no3<<"="<<(no1+no2+no3);
+}
+int main() 
+{
+
+     add(11,22,33);
+	 add(10,20);
+     add(3.4f,10.0f);
+     add(12.0f,10.0f);
+	return 0;	//end of local
+}
+******************************************************
+#include <iostream>
+using namespace std;
+class Parent
+{
+	public:
+			void welcome()
+	    	{
+	    		cout<<"\nParent:A very good morning how do you do?";
+			}
+		void eat()
+		{
+			cout<<"\nParent:Eating bhaji chapati...";
+		}
+};
+class Child:public Parent//derrived--sub class
+{
+	public:
+	void eat()
+		{
+			cout<<"\nChild:Eating Pizza,Burger.....";
+		}
+};
+int main()
+{
+  Child objc;
+  objc.welcome();
+  objc.eat();
+  Parent p;
+  p.welcome();
+  p.eat();
+	return 0;
+}
+*****************************************
+#include <iostream>
+using namespace std;
+class Human//base--super---gives properties
+{
+	private:
+		string name,gender;
+	public:
+		void setHuman(string n,string g)
+	    	{
+	    		name=n;
+	    		gender=g;
+	    		cout<<"\nHuman:SetHuman activated";
+			}
+		void displayHuman()
+		{
+			cout<<"\nyou are: "<<gender<<" called "<<name;
+			cout<<"\nHuman:displayHuman activated";
+		}
+};
+class Student:protected Human//derrived--sub class
+{
+	private:
+		string degree;
+	public:
+		void setDegree(string n,string g,string d)
+		{
+			setHuman(n,g);//internal call to setHuman :as method in a member
+			degree=d;
+			cout<<"\nSetDegree:Student activated:";
+			
+			
+		}
+		void displayinfo()
+		{
+			displayHuman();
+			cout<<"\nStudent:Degree is: "<<degree;
+		}
+};
+int main()
+{
+  Student s;//object of Sub Class---setdegree+display info
+
+  s.setDegree("amar","male","Phd");//local
+  s.displayinfo();	//local
+	
+	return 0;
+}
+******************************************
+#include <iostream>
+using namespace std;
+class Base
+{
+
+	public:
+		int datax1;
+	protected:
+		int datax2;
+	private:
+		int datax3;
+};
+//class name: mode base class
+class Derrived:public Base
+{
+	public:
+		int datay1;
+	protected:
+		int datay2;
+	private:
+		int datay3;
+};
+int main()
+{
+	Derrived x;
+	x.
+	
+	
+	return 0;
+}
+******************************
+#include <iostream>
+using namespace std;
+class Human//base--super---gives properties
+{
+	private:
+		string name,gender;
+	public:
+		void setHuman(string n,string g)
+	    	{
+	    		name=n;
+	    		gender=g;
+	    		cout<<"\nHuman:SetHuman activated";
+			}
+		void displayHuman()
+		{
+			cout<<"you are: "<<gender<<" called "<<name;
+			cout<<"\nHuman:displayHuman activated";
+		}
+};
+class Student:public Human//derrived--sub class
+{
+	private:
+		string degree;
+	public:
+		void setDegree(string d)
+		{
+			degree=d;
+			cout<<"\nSetDegree:Student activated:";
+			
+			
+		}
+		void displayinfo()
+		{
+			cout<<"\nStudent:Degree is: "<<degree;
+		}
+};
+int main()
+{
+  Student s;//object of Sub Class---setdegree+display info
+  s.setHuman("amar","male");//superclass method
+  s.setDegree("Phd");//local
+  s.displayHuman();	//inherited
+  s.displayinfo();	//local
+	
+	return 0;
+}
+***************************************
+#include <iostream>
+using namespace std;
+class Human//base--super---gives properties
+{
+	private:
+		string name,gender;
+	public:
+		void setHuman(string n,string g)
+	    	{
+	    		name=n;
+	    		gender=g;
+			}
+		void displayHuman()
+		{
+			cout<<"you are: "<<gender<<" called "<<name;
+		}
+};
+class Student:public Human//derrived--sub class
+{
+	private:
+		string degree;
+	public:
+		void setDegree(string d)
+		{
+			degree=d;
+		}
+		void displayinfo()
+		{
+			cout<<"\nDegree is: "<<degree;
+		}
+};
+int main()
+{
+  Student s;//object of Sub Class---setdegree+display info
+  s.setHuman("amar","male");//superclass method
+  s.setDegree("Phd");//local
+  s.displayHuman();	//inherited
+  s.displayinfo();	//local
+	
+	return 0;
+}
+*****************************************
+#include <iostream>
+using namespace std;
+class Base
+{
+
+	public:
+		int datax1;
+	protected:
+		int datax2;
+	private:
+		int datax3;
+};
+//class name: mode base class
+class Derrived:public Base
+{
+	public:
+		int datay1;
+	protected:
+		int datay2;
+	private:
+		int datay3;
+};
+int main()
+{
+	Derrived x;
+	x.datax1=100;
+	
+	
+	return 0;
+}
+*********************
+#include <iostream>
+using namespace std;
+class Human
+{
+  private:
+  	string name,gender;
+	int ACN;
+  public:
+  	static int generated_number;
+	Human(string name,string gender)
+  	{
+  		this->name=name;
+  		this->gender=gender;
+  		generated_number++;
+  		ACN=generated_number;
+  		cout<<"\nHuman " <<name<<" created with ACN"<<ACN;
+	  }
+  void displayHuman()
+  {
+  	cout<<"\nhi i am a "<<gender<<" called "<<name;
+  }
+  ~Human()
+  {
+  	cout<<"\nR.I.P "<<name<<" gaya re";
+  }
+  
+  //static function can only access static data 
+  static void ACN_display()
+  {
+  	cout<<"\nTotal ACN distributed till now:"<<generated_number-202300;
+  }
+};
+int Human::generated_number=202300;
+int main()
+{
+	Human h1("amar","male");
+	Human h2("superman","male");//parameterized constructor
+	Human h3("hulk","male");//parameterized constructor
+	Human h4("amarita","female");
+	Human h5("wonder woman","female");//parameterized constructor
+	Human h6("she-hulk","female");//parameterized constructor
+	Human::ACN_display();
+}
+******************************
+#include <iostream>
+using namespace std;
+class Human
+{
+  private:
+  	string name,gender;
+	int ACN;
+  public:
+  	static int generated_number;
+	Human(string name,string gender)
+  	{
+  		this->name=name;
+  		this->gender=gender;
+  		population++;
+  		cout<<"\nHuman created total population:"<<population;
+	  }
+  void displayHuman()
+  {
+  	cout<<"\nhi i am a "<<gender<<" called "<<name;
+  }
+  ~Human()
+  {
+  	cout<<"\nR.I.P "<<name<<" gaya re";
+  }
+  
+  //static function can only access static data 
+  static void population_display()
+  {
+  	cout<<"\nTotal population:"<<population;
+  }
+};
+int Human::generated_number=202300;
+int main()
+{
+	Human h1("amar","male");
+	Human h2("superman","male");//parameterized constructor
+	Human h3("hulk","male");//parameterized constructor
+	Human::population_display();
+}
+********************************
+#include <iostream>
+using namespace std;
+class Human
+{
+  private:
+  	string name,gender;
+
+  public:
+	Human(string name,string gender)
+	//parameterized constructor:set to user given values
+  	{
+  		cout<<"\nHuman created: parameterized constructor";
+  		this->name=name;
+  		this->gender=gender;
+	  }
+  void displayHuman()
+  {
+  	cout<<"\nhi i am a "<<gender<<" called "<<name;
+  }
+  ~Human()
+  {
+  	cout<<"\nR.I.P "<<name<<" gaya re";
+  }
+};
+int main()
+{
+	Human h1("amar","male");
+	h1.displayHuman();//display
+	
+	Human h2("superman","male");//parameterized constructor
+    h2.displayHuman();//display
+    
+
+}
+******************************
+#include <iostream>
+using namespace std;
+class Human
+{
+  private:
+  	string name,gender;
+
+  public:
+  void setHuman(string n ,string g)
+  {
+     name=n;
+	 gender=g;	
+  }	
+  void displayHuman()
+  {
+  	cout<<"\nhi i am a "<<gender;//<<" called "<<name;
+  }
+};
+int main()
+{
+	Human h;
+	h.setHuman("amar","male");
+	h.displayHuman();
+	Human h2;
+	h2.setHuman("amarita","female");
+	h2.displayHuman();
+
+}
+************************
+#include <iostream>
+using namespace std;
+class Circle
+{
+  private:
+  	float r;//instance member
+
+  public:
+  void setRadius(float r)//r is local member
+  {
+     this.r=r;//this referes to local instance
+     //c.setRadius  c<----this pointer  this.r-> c->r c.r
+  }	
+  void displayArea()
+  {
+  	cout<<"\narea is:"<<3.14*r*r;
+  }
+};
+int main()
+{
+	Circle c;
+	cout<<"Enter radius:";
+	float r;
+	cin>>r;
+	c.setRadius(r);
+	c.displayArea();
+}
+******************************
+#include <iostream>
+using namespace std;
+
+inline void copyright()
+{
+  cout<<"\ncode was developed by CDAC";
+}
+int main() 
+{
+	 cout<<"\nline from main";
+     copyright();//cout<<"\ncode was developed by CDAC";
+     cout<<"\nanother line from main";
+     copyright();//cout<<"\ncode was developed by CDAC";
+     cout<<"\nyet another line from main";
+     copyright();//cout<<"\ncode was developed by CDAC";
+	return 0;	//end of local
+}
+***************************************
+#include <iostream>
+using namespace std;
+
+void add(int no1,int no2)
+{
+  cout<<"\nInt number adder\n"<<no1<<"+"<<no2<<"="<<(no1+no2);
+}
+void add(float no1,float no2)
+{
+  cout<<"\nFloat number adder\n"<<no1<<"+"<<no2<<"="<<(no1+no2);
+}
+void add(int no1,int no2,int no3)
+{
+  cout<<"\n3 Int number adder\n"<<no1<<"+"<<no2<<"+"<<no3<<"="<<(no1+no2+no3);
+}
+int main() 
+{
+
+     add(11,22,33);
+	 add(10,20);
+     add(3.4f,10.0f);
+     add(12.0f,10.0f);
+	return 0;	//end of local
+}
+**********************************
+#include <iostream>
+using namespace std;
+class Parent
+{
+	public:
+			void welcome()
+	    	{
+	    		cout<<"\nParent:A very good morning how do you do?";
+			}
+		void eat()
+		{
+			cout<<"\nParent:Eating bhaji chapati...";
+		}
+};
+class Child:public Parent//derrived--sub class
+{
+	public:
+	void eat()
+		{
+			cout<<"\nChild:Eating Pizza,Burger.....";
+		}
+};
+int main()
+{
+  Child objc;
+  objc.welcome();
+  objc.eat();
+  Parent p;
+  p.welcome();
+  p.eat();
+	return 0;
+}
+****************************
+#include <iostream>
+using namespace std;
+class Human//base--super---gives properties
+{
+	private:
+		string name,gender;
+	public:
+		void setHuman(string n,string g)
+	    	{
+	    		name=n;
+	    		gender=g;
+	    		cout<<"\nHuman:SetHuman activated";
+			}
+		void displayHuman()
+		{
+			cout<<"\nyou are: "<<gender<<" called "<<name;
+			cout<<"\nHuman:displayHuman activated";
+		}
+};
+class Student:protected Human//derrived--sub class
+{
+	private:
+		string degree;
+	public:
+		void setDegree(string n,string g,string d)
+		{
+			setHuman(n,g);//internal call to setHuman :as method in a member
+			degree=d;
+			cout<<"\nSetDegree:Student activated:";
+			
+			
+		}
+		void displayinfo()
+		{
+			displayHuman();
+			cout<<"\nStudent:Degree is: "<<degree;
+		}
+};
+int main()
+{
+  Student s;//object of Sub Class---setdegree+display info
+
+  s.setDegree("amar","male","Phd");//local
+  s.displayinfo();	//local
+	
+	return 0;
+}
+************************************
+#include <iostream>
+using namespace std;
+class Base
+{
+
+	public:
+		int datax1;
+	protected:
+		int datax2;
+	private:
+		int datax3;
+};
+//class name: mode base class
+class Derrived:public Base
+{
+	public:
+		int datay1;
+	protected:
+		int datay2;
+	private:
+		int datay3;
+};
+int main()
+{
+	Derrived x;
+	x.
+	
+	
+	return 0;
+}
+************************
+#include <iostream>
+using namespace std;
+class Human//base--super---gives properties
+{
+	private:
+		string name,gender;
+	public:
+		void setHuman(string n,string g)
+	    	{
+	    		name=n;
+	    		gender=g;
+	    		cout<<"\nHuman:SetHuman activated";
+			}
+		void displayHuman()
+		{
+			cout<<"you are: "<<gender<<" called "<<name;
+			cout<<"\nHuman:displayHuman activated";
+		}
+};
+class Student:public Human//derrived--sub class
+{
+	private:
+		string degree;
+	public:
+		void setDegree(string d)
+		{
+			degree=d;
+			cout<<"\nSetDegree:Student activated:";
+			
+			
+		}
+		void displayinfo()
+		{
+			cout<<"\nStudent:Degree is: "<<degree;
+		}
+};
+int main()
+{
+  Student s;//object of Sub Class---setdegree+display info
+  s.setHuman("amar","male");//superclass method
+  s.setDegree("Phd");//local
+  s.displayHuman();	//inherited
+  s.displayinfo();	//local
+	
+	return 0;
+}
+**********************************
+#include <iostream>
+using namespace std;
+class Human//base--super---gives properties
+{
+	private:
+		string name,gender;
+	public:
+		void setHuman(string n,string g)
+	    	{
+	    		name=n;
+	    		gender=g;
+			}
+		void displayHuman()
+		{
+			cout<<"you are: "<<gender<<" called "<<name;
+		}
+};
+class Student:public Human//derrived--sub class
+{
+	private:
+		string degree;
+	public:
+		void setDegree(string d)
+		{
+			degree=d;
+		}
+		void displayinfo()
+		{
+			cout<<"\nDegree is: "<<degree;
+		}
+};
+int main()
+{
+  Student s;//object of Sub Class---setdegree+display info
+  s.setHuman("amar","male");//superclass method
+  s.setDegree("Phd");//local
+  s.displayHuman();	//inherited
+  s.displayinfo();	//local
+	
+	return 0;
+}
+**************************************
+#include <iostream>
+using namespace std;
+class Base
+{
+
+	public:
+		int datax1;
+	protected:
+		int datax2;
+	private:
+		int datax3;
+};
+//class name: mode base class
+class Derrived:public Base
+{
+	public:
+		int datay1;
+	protected:
+		int datay2;
+	private:
+		int datay3;
+};
+int main()
+{
+	Derrived x;
+	x.datax1=100;
+	
+	
+	return 0;
+}
+*******************************
+#include <iostream>
+using namespace std;
+class Human
+{
+  private:
+  	string name,gender;
+	int ACN;
+  public:
+  	static int generated_number;
+	Human(string name,string gender)
+  	{
+  		this->name=name;
+  		this->gender=gender;
+  		generated_number++;
+  		ACN=generated_number;
+  		cout<<"\nHuman " <<name<<" created with ACN"<<ACN;
+	  }
+  void displayHuman()
+  {
+  	cout<<"\nhi i am a "<<gender<<" called "<<name;
+  }
+  ~Human()
+  {
+  	cout<<"\nR.I.P "<<name<<" gaya re";
+  }
+  
+  //static function can only access static data 
+  static void ACN_display()
+  {
+  	cout<<"\nTotal ACN distributed till now:"<<generated_number-202300;
+  }
+};
+int Human::generated_number=202300;
+int main()
+{
+	Human h1("amar","male");
+	Human h2("superman","male");//parameterized constructor
+	Human h3("hulk","male");//parameterized constructor
+	Human h4("amarita","female");
+	Human h5("wonder woman","female");//parameterized constructor
+	Human h6("she-hulk","female");//parameterized constructor
+	Human::ACN_display();
+}
+******************************************
+#include <iostream>
+using namespace std;
+class Human
+{
+  private:
+  	string name,gender;
+	int ACN;
+  public:
+  	static int generated_number;
+	Human(string name,string gender)
+  	{
+  		this->name=name;
+  		this->gender=gender;
+  		population++;
+  		cout<<"\nHuman created total population:"<<population;
+	  }
+  void displayHuman()
+  {
+  	cout<<"\nhi i am a "<<gender<<" called "<<name;
+  }
+  ~Human()
+  {
+  	cout<<"\nR.I.P "<<name<<" gaya re";
+  }
+  
+  //static function can only access static data 
+  static void population_display()
+  {
+  	cout<<"\nTotal population:"<<population;
+  }
+};
+int Human::generated_number=202300;
+int main()
+{
+	Human h1("amar","male");
+	Human h2("superman","male");//parameterized constructor
+	Human h3("hulk","male");//parameterized constructor
+	Human::population_display();
+}
+*****************************
+#include <iostream>
+using namespace std;
+class Human
+{
+  private:
+  	string name,gender;
+
+  public:
+	Human(string name,string gender)
+	//parameterized constructor:set to user given values
+  	{
+  		cout<<"\nHuman created: parameterized constructor";
+  		this->name=name;
+  		this->gender=gender;
+	  }
+  void displayHuman()
+  {
+  	cout<<"\nhi i am a "<<gender<<" called "<<name;
+  }
+  ~Human()
+  {
+  	cout<<"\nR.I.P "<<name<<" gaya re";
+  }
+};
+int main()
+{
+	Human h1("amar","male");
+	h1.displayHuman();//display
+	
+	Human h2("superman","male");//parameterized constructor
+    h2.displayHuman();//display
+    
+
+}
+********************************
+*
+Constructor:
+-special function called on its own when object is created
+-function with class's name itself without return type
+-used for giving default values,user given values,make copy 
+  of exising object
+  */
+#include <iostream>
+using namespace std;
+class Human
+{
+  private:
+  	string name,gender;
+
+  public:
+  	Human()//default constructor:set to default values
+  	{
+  		cout<<"\nHuman created: Default value constructor";
+  		name="unnamed";
+  		gender="unknown";
+	  }
+	Human(string name,string gender)
+	//parameterized constructor:set to user given values
+  	{
+  		cout<<"\nHuman created: parameterized constructor";
+  		this->name=name;
+  		this->gender=gender;
+	  }
+	Human(Human &obj)//refrence of object created
+	//copy constructor:set parameters to values already set in passed object
+	//makes duplicate copy of obj
+  	{
+  		cout<<"\nHuman created: copy constructor";
+  		this->name=obj.name;
+  		this->gender=obj.gender;
+	  }
+  void setHuman(string n ,string g)
+  {
+     name=n;
+	 gender=g;	
+  }	
+  void displayHuman()
+  {
+  	cout<<"\nhi i am a "<<gender<<" called "<<name;
+  }
+};
+int main()
+{
+	Human h1;//object of class Human defult constructor called
+	h1.displayHuman();
+	h1.setHuman("amar","male");//set
+	h1.displayHuman();//display
+	
+	Human h2("superman","male");//parameterized constructor
+    h2.displayHuman();//display
+    
+    Human h3(h1);//copy constructor
+    h3.displayHuman();//display
+}
+**********************************
+#include <iostream>
+using namespace std;
+class Human
+{
+  private:
+  	string name,gender;
+
+  public:
+  void setHuman(string n ,string g)
+  {
+     name=n;
+	 gender=g;	
+  }	
+  void displayHuman()
+  {
+  	cout<<"\nhi i am a "<<gender;//<<" called "<<name;
+  }
+};
+int main()
+{
+	Human h;
+	h.setHuman("amar","male");
+	h.displayHuman();
+	Human h2;
+	h2.setHuman("amarita","female");
+	h2.displayHuman();
+
+}
+***************************
+#include <iostream>
+using namespace std;
+class Circle
+{
+  private:
+  	float r;//instance member
+
+  public:
+  void setRadius(float r)//r is local member
+  {
+     this.r=r;//this referes to local instance
+     //c.setRadius  c<----this pointer  this.r-> c->r c.r
+  }	
+  void displayArea()
+  {
+  	cout<<"\narea is:"<<3.14*r*r;
+  }
+};
+int main()
+{
+	Circle c;
+	cout<<"Enter radius:";
+	float r;
+	cin>>r;
+	c.setRadius(r);
+	c.displayArea();
+}
+********************************
+#include <iostream>
+using namespace std;
+
+inline void copyright()
+{
+  cout<<"\ncode was developed by CDAC";
+}
+int main() 
+{
+	 cout<<"\nline from main";
+     copyright();//cout<<"\ncode was developed by CDAC";
+     cout<<"\nanother line from main";
+     copyright();//cout<<"\ncode was developed by CDAC";
+     cout<<"\nyet another line from main";
+     copyright();//cout<<"\ncode was developed by CDAC";
+	return 0;	//end of local
+}
+**************************
+#include <iostream>
+using namespace std;
+
+void add(int no1,int no2)
+{
+  cout<<"\nInt number adder\n"<<no1<<"+"<<no2<<"="<<(no1+no2);
+}
+void add(float no1,float no2)
+{
+  cout<<"\nFloat number adder\n"<<no1<<"+"<<no2<<"="<<(no1+no2);
+}
+void add(int no1,int no2,int no3)
+{
+  cout<<"\n3 Int number adder\n"<<no1<<"+"<<no2<<"+"<<no3<<"="<<(no1+no2+no3);
+}
+int main() 
+{
+
+     add(11,22,33);
+	 add(10,20);
+     add(3.4f,10.0f);
+     add(12.0f,10.0f);
+	return 0;	//end of local
+}
+*********************************
+#include <iostream>
+using namespace std;
+
+void add(int no1,int no2)
+{
+  cout<<"\nInt number adder\n"<<no1<<"+"<<no2<<"="<<(no1+no2);
+}
+void add(float no1,float no2)
+{
+  cout<<"\nFloat number adder\n"<<no1<<"+"<<no2<<"="<<(no1+no2);
+}
+void add(int no1,int no2,int no3)
+{
+  cout<<"\n3 Int number adder\n"<<no1<<"+"<<no2<<"+"<<no3<<"="<<(no1+no2+no3);
+}
+int main() 
+{
+
+     add(11,22,33);
+	 add(10,20);
+     add(3.4f,10.0f);
+     add(12.0f,10.0f);
+	return 0;	//end of local
+}
+*****************************
+
